@@ -4,15 +4,15 @@
   "description": "Browser based game",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
-    "lint": "eslint .",
-    "test": "jest",
     "coverage": "jest --coverage",
+    "lint": "eslint .",
     "preshow:coverage": "npm run coverage",
-    "show:coverage": "live-server coverage/lcov-report",
     "preshow:dist": "npm run build",
-    "show:dist": "live-server dist"
+    "show:coverage": "live-server coverage/lcov-report",
+    "show:dist": "live-server dist",
+    "start": "webpack-dev-server --mode development",
+    "test": "jest"
   },
   "author": "Chumakova",
   "license": "ISC",
@@ -28,6 +28,7 @@
     "eslint-plugin-import": "^2.20.2",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.2.0",
+    "husky": "^4.2.5",
     "jest": "^25.4.0",
     "live-server": "^1.2.1",
     "mini-css-extract-plugin": "^0.9.0",
@@ -48,5 +49,11 @@
   "bugs": {
     "url": "https://github.com/ChumakovaAnna/AJS-hw-3-task-1/issues"
   },
-  "homepage": "https://github.com/ChumakovaAnna/AJS-hw-3-task-1#readme"
+  "homepage": "https://github.com/ChumakovaAnna/AJS-hw-3-task-1#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm test",
+      "pre-push": "npm test"
+    }
+  }
 }
